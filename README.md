@@ -76,6 +76,13 @@ DELETE `/php-api/country/delete.php`
 }
 ```
 
+POST `/php-api/country/byTravel.php`
+```json
+{
+    "Id": "int"
+}
+```
+
 ### Travel
 
 GET `/php-api/travel/read.php`
@@ -107,13 +114,6 @@ POST `/php-api/travel/byCountry.php`
 ```json
 {
     "CountryName": "string"
-}
-```
-
-POST `/php-api/travel/countriesInvolved.php`
-```json
-{
-    "Id": "int"
 }
 ```
 
