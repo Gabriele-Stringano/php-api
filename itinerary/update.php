@@ -35,5 +35,5 @@ if (!empty($data->Id))
     }
 } else {
     http_response_code(400);
-    echo json_encode(array("message" => "Error, wrong data for itinerary."));
+    echo json_encode(array("message" => "Error, missing field Id."));
 }
