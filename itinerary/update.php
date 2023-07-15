@@ -19,8 +19,11 @@ $data = json_decode(file_get_contents("php://input"));
 if (!empty($data->Id))
  {
     $itinerary->Id = $data->Id;
+
+    // A simple way to prompt a more comprehensible error
     $itinerary->Country_id = !empty($data->Country_id) ? $data->Country_id : '';
     $itinerary->Travel_id = !empty($data->Travel_id) ? $data->Travel_id : '';
+
     try {
         if ($itinerary->update()) {
             http_response_code(200);

@@ -6,38 +6,37 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once '../database.php';
-include_once '../models/Travel.php';
+include_once '../models/Country.php';
 
 $database = new Database();
 $db = $database->getConnection();
-$travel = new Travel($db);
+$country = new Country($db);
 
 $data = json_decode(file_get_contents("php://input"));
 
 if (!empty($data->Id)) {
 
-    $travel->Id = $data->Id;
+    $country->Id = $data->Id;
 
-    $stmt = $travel->countriesInvolved();
+    $stmt = $country->byTravel();
 
     $num = $stmt->rowCount();
 
     if ($num > 0) {
-        $travels_arr = array();
-        $travels_arr["records"] = array();
+        $countries_arr = array();
+        $countries_arr["records"] = array();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
 
-            $travel_item = array(
+            $country_item = array(
                 "Name" => $Name,
             );
             // inseriti in un array PHP
-            array_push($travels_arr["records"], $travel_item);
+            array_push($countries_arr["records"], $country_item);
         }
         http_response_code(200);
-        // ritornati in formato JSON grazie alla conversione data dalla funzione 
-        echo json_encode($travels_arr);
+        echo json_encode($countries_arr);
     } else {
         http_response_code(404);
         echo json_encode(

@@ -16,7 +16,8 @@ $data = json_decode(file_get_contents("php://input"));
 
 if (!empty($data->CountryName)) {
 
-    $travel->countryName = $data->CountryName;
+    $uppercaseName = ucfirst($data->CountryName);
+    $travel->countryName = $uppercaseName;
 
     // query products
     $stmt = $travel->byCountry();

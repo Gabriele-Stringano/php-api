@@ -44,6 +44,37 @@ class Country
         return $stmt;
     }
 
+    function byTravel()
+    {
+        $query =
+            "SELECT 
+            c.Name
+        FROM 
+            travel t
+        JOIN 
+            itinerary i ON t.Id = i.Travel_id
+        JOIN 
+            country c ON i.Country_id = c.id
+        WHERE
+            t.Id=:Id
+        ";
+
+        $stmt = $this->conn->prepare($query);
+
+        $this->Id = htmlspecialchars(strip_tags($this->Id));
+
+        // binding
+        $stmt->bindParam(":Id", $this->Id);
+
+        // execute query
+        try {
+            $stmt->execute();
+            return $stmt;
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage());
+        }
+    }
+
     // CREATE COUNTRY
     function create()
     {
