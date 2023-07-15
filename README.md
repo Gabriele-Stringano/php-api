@@ -51,9 +51,9 @@ As a Start2impact student, I developed this application to put my newly acquired
 
 ### Country
 
-GET `/php-api/country/read`
+GET `/php-api/country/read.php`
 <br />
-POST `/php-api/country/create`
+POST `/php-api/country/create.php`
 
 ```json
 {
@@ -61,7 +61,7 @@ POST `/php-api/country/create`
 }
 ```
 
-POST `/php-api/country/update`
+POST `/php-api/country/update.php`
 ```json
 {
     "Name": "string",
@@ -69,7 +69,7 @@ POST `/php-api/country/update`
 }
 ```
 
-DELETE `/php-api/country/delete`
+DELETE `/php-api/country/delete.php`
 ```json
 {
     "Name": "string"
@@ -78,9 +78,9 @@ DELETE `/php-api/country/delete`
 
 ### Travel
 
-GET `/php-api/travel/read`
+GET `/php-api/travel/read.php`
 <br />
-POST `/php-api/travel/create`
+POST `/php-api/travel/create.php`
 
 ```json
 {
@@ -88,7 +88,7 @@ POST `/php-api/travel/create`
 }
 ```
 
-POST `/php-api/travel/update`
+POST `/php-api/travel/update.php`
 ```json
 {
     "Id": "int",
@@ -96,25 +96,39 @@ POST `/php-api/travel/update`
 }
 ```
 
-DELETE `/php-api/travel/delete`
+DELETE `/php-api/travel/delete.php`
 ```json
 {
     "Id": "int"
 }
 ```
 
-POST `/php-api/travel/byCountry`
+POST `/php-api/travel/byCountry.php`
 ```json
 {
     "CountryName": "string"
 }
 ```
 
+POST `/php-api/travel/countriesInvolved.php`
+```json
+{
+    "Id": "int"
+}
+```
+
+POST `/php-api/travel/byAvailablePlaces.php` (num of seats or similar)
+```json
+{
+    "AvailablePlaces": "int"
+}
+```
+
 ### Itinerary
 
-GET `/php-api/itinerary/read`
+GET `/php-api/itinerary/read.php`
 <br />
-POST `/php-api/itinerary/create`
+POST `/php-api/itinerary/create.php`
 
 ```json
 {
@@ -123,7 +137,7 @@ POST `/php-api/itinerary/create`
 }
 ```
 
-POST `/php-api/itinerary/update`
+POST `/php-api/itinerary/update.php`
 ```json
 {
     "Id": "int",
@@ -132,7 +146,7 @@ POST `/php-api/itinerary/update`
 }
 ```
 
-DELETE `/php-api/itinerary/delete`
+DELETE `/php-api/itinerary/delete.php`
 ```json
 {
     "Id": "int"
