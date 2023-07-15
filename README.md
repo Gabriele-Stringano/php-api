@@ -76,12 +76,68 @@ DELETE `/php-api/country/delete`
 }
 ```
 
-
 ### Travel
 
+GET `/php-api/travel/read`
+<br />
+POST `/php-api/travel/create`
 
-### $Itinerary
+```json
+{
+    "AvailablePlaces": "int"
+}
+```
 
+POST `/php-api/travel/update`
+```json
+{
+    "Id": "int",
+    "AvailablePlaces": "int"
+}
+```
+
+DELETE `/php-api/travel/delete`
+```json
+{
+    "Id": "int"
+}
+```
+
+POST `/php-api/travel/byCountry`
+```json
+{
+    "CountryName": "string"
+}
+```
+
+### Itinerary
+
+GET `/php-api/itinerary/read`
+<br />
+POST `/php-api/itinerary/create`
+
+```json
+{
+    "Country_id": "int",
+    "Travel_id": "int",
+}
+```
+
+POST `/php-api/itinerary/update`
+```json
+{
+    "Id": "int",
+    "Country_id": "int",
+    "Travel_id" : "int"
+}
+```
+
+DELETE `/php-api/itinerary/delete`
+```json
+{
+    "Id": "int"
+}
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
