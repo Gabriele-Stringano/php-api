@@ -14,9 +14,9 @@ $travel = new Travel($db);
 
 $data = json_decode(file_get_contents("php://input"));
 
-if (!empty($data->countryName)) {
+if (!empty($data->CountryName)) {
 
-    $travel->countryName = $data->countryName;
+    $travel->countryName = $data->CountryName;
 
     // query products
     $stmt = $travel->byCountry();
