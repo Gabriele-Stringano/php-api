@@ -18,15 +18,15 @@ $data = json_decode(file_get_contents("php://input"));
 
 if (!empty($data->Id)) {
     try {
-    $travel->Id = $data->Id;
+        $travel->Id = $data->Id;
 
-    if ($travel->delete()) {
-        http_response_code(200);
-        echo json_encode(array("message" => "Travel deleted"));
-    } else {
-        http_response_code(404);
-        echo json_encode(array("message" => "Travel not found"));
-    }
+        if ($travel->delete()) {
+            http_response_code(200);
+            echo json_encode(array("message" => "Travel deleted"));
+        } else {
+            http_response_code(404);
+            echo json_encode(array("message" => "Travel not found"));
+        }
     } catch (PDOException $e) {
         http_response_code(500);
         echo json_encode(array("message" => "Error deleting travel: " . $e->getMessage()));

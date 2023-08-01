@@ -17,15 +17,15 @@ $data = json_decode(file_get_contents("php://input"));
 
 if (!empty($data->Id)) {
     try {
-    $itinerary->Id = $data->Id;
+        $itinerary->Id = $data->Id;
 
-    if ($itinerary->delete()) {
-        http_response_code(200);
-        echo json_encode(array("message" => "Itinerary deleted"));
-    } else {
-        http_response_code(404);
-        echo json_encode(array("message" => "Itinerary not found"));
-    }
+        if ($itinerary->delete()) {
+            http_response_code(200);
+            echo json_encode(array("message" => "Itinerary deleted"));
+        } else {
+            http_response_code(404);
+            echo json_encode(array("message" => "Itinerary not found"));
+        }
     } catch (PDOException $e) {
         http_response_code(500);
         echo json_encode(array("message" => "Error deleting itinerary: " . $e->getMessage()));

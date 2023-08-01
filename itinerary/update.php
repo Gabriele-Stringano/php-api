@@ -16,8 +16,7 @@ $itinerary = new Itinerary($db);
 
 $data = json_decode(file_get_contents("php://input"));
 
-if (!empty($data->Id))
- {
+if (!empty($data->Id)) {
     $itinerary->Id = $data->Id;
 
     // A simple way to prompt a more comprehensible error

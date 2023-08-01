@@ -25,7 +25,7 @@ class Country
         }
         return true;
     }
-    
+
     // Constructor
     public function __construct($db)
     {

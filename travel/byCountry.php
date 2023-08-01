@@ -48,8 +48,8 @@ if (!empty($data->CountryName)) {
             array("message" => "No travels found.")
         );
     }
-}else{
-        //400 bad request
-        http_response_code(400);
-        echo json_encode(array("message" => "Error, wrong data, undefined property countryName."));
+} else {
+    //400 bad request
+    http_response_code(400);
+    echo json_encode(array("message" => "Error, wrong data, undefined property countryName."));
 }
