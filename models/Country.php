@@ -4,7 +4,7 @@ class Country
 {
 
     private $conn;
-    private $table_name = "country"; // Specify the correct table name here
+    private $TABLE_NAME = "country"; // Specify the correct table name here
     public $NewName;
 
     // Properties
@@ -13,7 +13,7 @@ class Country
 
     private function isNamePresent()
     {
-        $checkQuery = "SELECT Name FROM " . $this->table_name . " WHERE Name = :Name";
+        $checkQuery = "SELECT Name FROM " . $this->TABLE_NAME . " WHERE Name = :Name";
         $checkStmt = $this->conn->prepare($checkQuery);
         $checkStmt->bindParam(":Name", $this->Name);
         $checkStmt->execute();
@@ -36,7 +36,7 @@ class Country
     function read()
     {
         // Select all
-        $query = "SELECT a.Id, a.Name FROM " . $this->table_name . " a";
+        $query = "SELECT a.Id, a.Name FROM " . $this->TABLE_NAME . " a";
         $stmt = $this->conn->prepare($query);
 
         // Execute query
@@ -80,7 +80,7 @@ class Country
     {
 
         $query = "INSERT INTO
-                    " . $this->table_name . "
+                    " . $this->TABLE_NAME . "
                 SET
                  Name=:name";
 
@@ -113,7 +113,7 @@ class Country
         }
 
         $query = "UPDATE
-                    " . $this->table_name . "
+                    " . $this->TABLE_NAME . "
                 SET
                     Name=:NewName
                 WHERE
@@ -147,7 +147,7 @@ class Country
             return false;
         }
 
-        $query = "DELETE FROM " . $this->table_name . " WHERE Name = ?";
+        $query = "DELETE FROM " . $this->TABLE_NAME . " WHERE Name = ?";
 
         $stmt = $this->conn->prepare($query);
 

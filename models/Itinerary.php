@@ -4,7 +4,7 @@ class Itinerary
 {
 
     private $conn;
-    private $table_name = "itinerary"; // Specify the correct table name here
+    private $TABLE_NAME = "itinerary"; // Specify the correct table name here
 
     // Properties
     public $Id;
@@ -13,7 +13,7 @@ class Itinerary
 
     private function isIdPresent()
     {
-        $checkQuery = "SELECT Id FROM " . $this->table_name . " WHERE Id = :id";
+        $checkQuery = "SELECT Id FROM " . $this->TABLE_NAME . " WHERE Id = :id";
         $checkStmt = $this->conn->prepare($checkQuery);
         $checkStmt->bindParam(":id", $this->Id);
         $checkStmt->execute();
@@ -34,7 +34,7 @@ class Itinerary
     function read()
     {
 
-        $query = "SELECT a.Id, a.Country_id, a.Travel_id FROM " . $this->table_name . " a";
+        $query = "SELECT a.Id, a.Country_id, a.Travel_id FROM " . $this->TABLE_NAME . " a";
         $stmt = $this->conn->prepare($query);
 
         // Execute query
@@ -46,7 +46,7 @@ class Itinerary
     {
 
         $query = "INSERT INTO
-                        " . $this->table_name . "
+                        " . $this->TABLE_NAME . "
                     SET
                     Country_id=:country_id,
                     Travel_id=:travel_id
@@ -78,7 +78,7 @@ class Itinerary
         }
 
         $query = "UPDATE
-                    " . $this->table_name . "
+                    " . $this->TABLE_NAME . "
                 SET
                 Country_id=:country_id,
                 Travel_id=:travel_id
@@ -113,7 +113,7 @@ class Itinerary
             return false;
         }
 
-        $query = "DELETE FROM " . $this->table_name . " WHERE Id = ?";
+        $query = "DELETE FROM " . $this->TABLE_NAME . " WHERE Id = ?";
 
         $stmt = $this->conn->prepare($query);
 
